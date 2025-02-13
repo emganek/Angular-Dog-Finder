@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BASE_DOG_API } from '../../../shared/consts/system';
+import { PaginationParams } from '../../../shared/models/common';
+import { DogBreed } from '../models/dog-breed';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +25,9 @@ export class DogBreedService {
 
   //#endregion Methods
 
-  getBreedById(id: string) {
-    // return this.httpClient.get(`${this.BASE_DOG_BREED}abys`);
-    return this.httpClient.get(`${this.BASE_DOG_BREED}/${id}`);
-  }
-
-  getBreeds() {
-    return this.httpClient.get(this.BASE_DOG_BREED);
+  getBreeds(params?: Partial<PaginationParams>): Observable<DogBreed[]> {
+    params = params ? params : {};
+    return this.httpClient.get<DogBreed[]>(this.BASE_DOG_BREED, { params });
   }
 
   //#endregion

@@ -1,1 +1,9 @@
-<p>dog-overview works!</p>
+<div *ngIf="data" class="dog-overview-container">
+  <img class="dog-overview-image" [src]="data.image.url" alt="" />
+  <div class="dog-overview-info">
+    <h3 [title]="data.name" class="dog-overview-name">{{ data.name }}</h3>
+    <span [title]="data.bred_for" class="dog-overview-duty">{{
+      data.bred_for
+    }}</span>
+  </div>
+</div>

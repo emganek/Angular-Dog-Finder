@@ -1,1 +1,23 @@
-<p>dog-detail works!</p>
+<div *ngIf="data" class="dog-detail-container">
+  <h3>
+    Height: <span>{{ data.height.metric }}</span>
+  </h3>
+  <h3>
+    Weight: <span>{{ data.weight.metric }}</span>
+  </h3>
+  <h3>
+    Name: <span>{{ data.name }}</span>
+  </h3>
+  <h3>
+    Duty: <span>{{ data.bred_for }}</span>
+  </h3>
+  <h3>
+    Breed group: <span>{{ data.breed_group }}</span>
+  </h3>
+  <h3>
+    Life span: <span>{{ data.life_span }}</span>
+  </h3>
+  <h3>
+    Temperament: <span>{{ data.temperament }}</span>
+  </h3>
+</div>

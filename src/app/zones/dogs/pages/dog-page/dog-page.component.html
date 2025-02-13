@@ -1,14 +1,20 @@
-<app-dog-card>
-  <div *ngIf="viewMode === 'overview'; else detailTemplate">
-    <div>View mode</div>
-  </div>
+<div class="dog-page-container">
+  <app-dog-card
+    (action)="userAction$.next($event)"
+    (swipeleft)="userAction$.next(false)"
+    (swiperight)="userAction$.next(true)"
+  >
+    <a style="width: 100%; height: 100%" (click)="onChangeView()">
+      <ng-container *ngIf="viewMode === 'overview'; else detailTemplate">
+        <app-dog-overview
+          style="pointer-events: none"
+          [data]="data[currentDogIndex]"
+        />
+      </ng-container>
 
-  <ng-template #detailTemplate>
-    <div>
-      Detail mode
-    </div>
-  </ng-template>
-</app-dog-card>
-
-
-<button (click)="changeView()">Change View</button>
+      <ng-template #detailTemplate>
+        <app-dog-detail [data]="data[currentDogIndex]" />
+      </ng-template>
+    </a>
+  </app-dog-card>
+</div>

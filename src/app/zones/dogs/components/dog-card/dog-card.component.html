@@ -3,7 +3,12 @@
     <ng-content></ng-content>
   </div>
   <div class="dog-card-footer">
-    <p-button class="btn-action" label="Dislike" severity="danger"/>
-    <p-button class="btn-action" label="Like" />
+    <p-button
+      (click)="onAction(false)"
+      class="btn-action"
+      label="Dislike"
+      severity="danger"
+    />
+    <p-button (click)="onAction(true)" class="btn-action" label="Like" />
   </div>
 </div>

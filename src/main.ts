@@ -8,16 +8,13 @@ import { Config } from './app/bootstrap/inits/config-models';
 fetch('/assets/config/config.json')
   .then((response) => response.json())
   .then((config: Config) => {
-    console.log('apiKeyConfig', config);
-
     const selectedApiKey = config.apiKeyConfig.selectedApiKey;
-
-    console.log('tao ne', config.apiKeyConfig[selectedApiKey]);
 
     platformBrowserDynamic([
       { provide: API_KEY, useValue: config.apiKeyConfig[selectedApiKey] },
     ]);
     bootstrapApplication(AppComponent, appConfig).catch((err) =>
+      // eslint-disable-next-line no-console
       console.error(err)
     );
   });

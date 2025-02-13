@@ -1,36 +1,22 @@
-import { Component } from '@angular/core';
-import { DogBreedService } from '../../services/dog-breed.service';
+import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input
+} from '@angular/core';
+import { DogBreed } from '../../models/dog-breed';
 
 @Component({
   selector: 'app-dog-overview',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dog-overview.component.html',
   styleUrl: './dog-overview.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DogOverviewComponent {
-  //#region Fields
+  //#region Inputs
 
-  data: any[] = [];
-
-  //#endregion
-
-  //#region Constructor
-
-  constructor(
-    private dogBreedService: DogBreedService
-  ) {
-    this.getData();
-  }
-
-  //#endregion
-
-  //#region Methods
-
-  getData() {
-    this.dogBreedService.getBreeds().subscribe((data) => {
-      console.log('dataaaaaaaa', data);
-    });
-  }
+  @Input({ required: true }) data!: DogBreed;
 
   //#endregion
 }
