@@ -1,0 +1,14 @@
+<app-dog-card>
+  <div *ngIf="viewMode === 'overview'; else detailTemplate">
+    <div>View mode</div>
+  </div>
+
+  <ng-template #detailTemplate>
+    <div>
+      Detail mode
+    </div>
+  </ng-template>
+</app-dog-card>
+
+
+<button (click)="changeView()">Change View</button>

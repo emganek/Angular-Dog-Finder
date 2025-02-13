@@ -1,0 +1,28 @@
+.dog-card {
+  height: 500px;
+  width: 300px;
+  border: solid 1px black;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &-content {
+    border: solid 1px black;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+::ng-deep {
+  .btn-action .p-button.p-component {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+  }
+}
